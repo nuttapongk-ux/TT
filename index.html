@@ -8,29 +8,18 @@
   <title>PSN Ticket Management — Payment Gateway Support</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <div id="app">
-    <div
-      style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:16px;color:#94a3b8;font-family:Inter,sans-serif">
-      <div style="font-size:3rem;animation:ld 1s ease-in-out infinite">💳</div>
-      <div style="font-size:1rem;font-weight:600">กำลังโหลดระบบ...</div>
-    </div>
-  </div>
   <style>
     @keyframes ld {
 
       0%,
       100% {
-        transform: scale(1);
-        opacity: 1
+        transform: scale(1) rotate(0deg)
       }
 
       50% {
-        transform: scale(1.15);
-        opacity: .7
+        transform: scale(1.15) rotate(180deg)
       }
     }
 
@@ -40,8 +29,24 @@
       }
     }
   </style>
+</head>
 
-  <!-- Load scripts in order: data → pages → app (app boots on DOMContentLoaded) -->
+<body>
+  <div id="app">
+    <!-- Initial loading shell — replaced by JS -->
+    <div
+      style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:16px;color:#94a3b8;font-family:Inter,system-ui,sans-serif">
+      <div style="font-size:3rem;animation:ld 1.2s ease-in-out infinite">💳</div>
+      <div style="font-size:.95rem;font-weight:600">กำลังเชื่อมต่อ Firebase...</div>
+      <div style="font-size:.78rem;color:#475569">PSN Payment Gateway Ticket System</div>
+    </div>
+  </div>
+
+  <!-- Firebase Compat SDK (works with file://) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+  <!-- App Scripts (order matters: data → pages → app) -->
   <script src="js/data.js"></script>
   <script src="js/pages.js"></script>
   <script src="js/app.js"></script>
